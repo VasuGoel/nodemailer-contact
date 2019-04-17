@@ -24,3 +24,22 @@ app.get("/", (req, res) => {
 app.get("/contact", (req, res) => {
     res.render("contact");
 });
+
+// post route
+app.post("/contact", (req, res) => {
+    const output = `
+        <p>Hello,<p>
+        <p>You have a new contact request.</p>
+        <h3>Contact Details</h3>
+        <ul>  
+            <li>Name: ${req.body.firstname + " " + req.body.lastname}</li>
+            <li>Phone: ${req.body.phone}</li>
+            <li>Email: ${req.body.email}</li>
+            <li>Subject: ${req.body.subject}</li>
+        </ul>
+        <h3>Message:</h3>
+        <p>${req.body.message}</p>
+    `
+    
+    
+});
