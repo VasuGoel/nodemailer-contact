@@ -1,0 +1,17 @@
+{
+  "name": "sendemailsnode",
+  "version": "1.0.0",
+  "description": "Node app to send emails",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vasu Goel",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "nodemailer": "^6.1.0"
+  }
+}
