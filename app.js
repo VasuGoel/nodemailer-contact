@@ -41,7 +41,7 @@ app.post("/contact", (req, res) => {
         <p>${req.body.message}</p>
     `
     
-    // create reusable transporter object using the default SMTP transport
+// create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         host: 'smtp.gmail.com',
@@ -64,5 +64,21 @@ app.post("/contact", (req, res) => {
       text: 'Hello world?', // plain text body
       html: output // html body
     };
+
+// send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+              return console.log(error);
+          }
+          console.log('Message sent: %s', info.messageId);   
+          console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     
+          res.redirect('/contact');
+    });
+});
+
+
+//  starts a UNIX socket and listens for connections on the given path
+app.listen(process.env.PORT, process.env.IP, () => {
+    console.log("Server has started...");
 });
